@@ -25,29 +25,57 @@ $(function () {
       disableOnInteraction: false,
     },
     slideActiveClass: "on",
-    on: {
-      init: function () {},
-      slideChangeTransitionEnd: function () {},
-    },
   });
 
   $(".main_visual .arrows .left").on("click", function () {
     mainSlide.slidePrev();
   });
+
   $(".main_visual .arrows .right").on("click", function () {
     mainSlide.slideNext();
   });
 
   const noticeSlide = new Swiper(".notice_slide", {
     loop: true,
-    slidesPerView: 2,
-    spaceBetween: 30,
+    slidesPerView: 1,
+    spaceBetween: 0,
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 30,
+      },
+    },
   });
 
   $(".main_notice .arrows .left").on("click", function () {
     noticeSlide.slidePrev();
   });
+
   $(".main_notice .arrows .right").on("click", function () {
     noticeSlide.slideNext();
+  });
+
+  $(".moblie_btn").on("click", function () {
+    $(".gnb").toggleClass("on");
+    $(".header").toggleClass("oo");
+  });
+
+  $(".gnb .main_menu>li>a").on("click", function (e) {
+    if ($(".gnb").hasClass("on")) {
+      e.preventDefault();
+      $(this).next().stop().slideToggle();
+      $(this).parent().siblings().find(".sub_menu").stop().slideUp();
+    }
+  });
+
+  $(window).on("resize", function () {
+    // PC버전 오작동 방지
+    $(".gnb").removeClass("on");
+  });
+
+  $(".gnb").on("wheel", function (e) {
+    if ($(".gnb").hasClass("on")) {
+      e.preventDefault();
+    }
   });
 });
