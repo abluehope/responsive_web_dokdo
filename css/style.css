@@ -932,6 +932,9 @@
     outline: 1px solid --tomato;
   }
 
+  html {
+    font-size: 1px;
+  }
   .section {
     padding: 5% 0;
   }
