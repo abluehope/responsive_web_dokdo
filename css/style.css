@@ -1102,7 +1102,7 @@
   }
 
   .main_slide {
-    border-radius: 0 30rem;
+    border-radius: 0 0 30rem 30rem;
     overflow: hidden;
   }
 
